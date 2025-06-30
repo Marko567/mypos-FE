@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row justify-content-center mb-5 mb-4 mt-3">
+      <div class="col-md-8 col-lg-6">
+        <h2>Login</h2>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 p-4 bg-light border rounded-4">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <div class="row mb-2">
+            <div class="col-12">
+              <label for="field_username" class="form-label">Username</label>
+              <input type="text" class="form-control" formControlName="username" id="field_username">
+            </div>
+          </div>
+
+          <div class="row mb-4">
+            <div class="col-12">
+              <label for="field_password" class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="password" id="field_password">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row justify-content-center mt-3 mb-4">
+      <div class="col-md-8">
+        <h2>Register</h2>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-8">
+              <label for="field_firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" formControlName="first_name" id="field_firstName">
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-8">
+              <label for="field_lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" formControlName="last_name" id="field_lastName">
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-8">
+              <label for="field_dateOfBirdth" class="form-label">Date of Birdth</label>
+              <input type="date" class="form-control" formControlName="date_of_birth" id="field_dateOfBirdth">
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-4">
+              <label class="form-label" for="field_city">City</label>
+              <input type="text" class="form-control" formControlName="city" id="field_city">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label" for="field_state">State</label>
+              <input type="text" class="form-control" formControlName="state" id="field_state">
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-8">
+              <label for="field_username" class="form-label">Username</label>
+              <input type="text" class="form-control" formControlName="username" id="field_username">
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
+              <label for="field_password" class="form-label">Password</label>
+              <input type="text" class="form-control" formControlName="password" id="field_password">
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="d-flex justify-content-end gap-3">
+                <button class="btn btn-outline-secondary">
+                  <i class="bi bi-ban"></i>&nbsp;
+                  <span>Cancel</span>
+                </button>
+                <button class="btn btn-primary" [disabled]="registerForm.invalid">Register</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

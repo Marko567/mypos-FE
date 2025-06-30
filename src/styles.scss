@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+a {
+  border-radius: 0.5rem;
+}
+
+a.active {
+  background-color: #dee2e6;
+  font-weight: 500;
+}
+
+a.nav-link:hover {
+  background-color: #dee2e6;
+}

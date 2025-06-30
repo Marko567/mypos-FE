@@ -1,0 +1,36 @@
+<div class="card" >
+  <div class="card-header">
+    <div class="d-flex justify-content-between">
+      <div>
+        <span class="fw-medium">{{ post.author }}</span>
+        <span class="text-body-secondary text-small">, posted on {{ post.created_date }}</span>
+      </div>
+      <div>
+        <span><i class="bi bi-star"></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-title fs-5">
+       {{ post.title }}
+    </div>
+    <p class="card-text">
+      {{ post.text }}
+    </p>
+  </div>
+  <div class="card-footer py-0 d-flex justify-content-between">
+    <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-content-center gap-1">
+        <span>{{ post.likes_count }}</span>
+        <span><i class="bi bi-hand-thumbs-up"></i></span>
+      </div>
+      <div class="d-flex align-content-center gap-1">
+        <span>{{ post.comments_count }}</span>
+        <span><i class="bi bi-chat-right-text"></i></span>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-link" [routerLink]="['/posts', post.id, 'detail']">View more</button>
+    </div>
+  </div>
+</div>

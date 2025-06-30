@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row mt-3 mb-4">
+    <div class="col">
+      <h2>Create Post</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-3">
+          <div class="col-12">
+            <label class="form-label" for="title_field">Title</label>
+            <input type="text" class="form-control" formControlName="title" id="title_field">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <label class="form-label" for="title_text">Text</label>
+            <textarea class="form-control" formControlName="text" id="title_text">
+            </textarea>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-4">
+            <label for="field_tags" class="form-label">Tags</label>
+            <input type="text" class="form-control" id="field_tags" (keydown.enter)="onEnter($event)">
+            <small class="text-muted">Press Enter to add tag to the form</small>
+          </div>
+          <div class="col-12">
+              <div class="d-flex gap-2">
+                @for(tag of tagsArray.controls; track tag; let i = $index) {
+                  <span class="bg-secondary d-inline-flex align-items-center gap-1 px-2 py-1 text-white rounded-5">
+                    #{{ tag.value }}
+                    <button type="button" class="btn btn-sm btn-link p-1 text-white" (click)="onRemove(i)">
+                      <i class="bi bi-x-lg"></i>
+                    </button>
+                  </span>
+                }
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="postForm.invalid">
+              <i class="bi bi-plus-lg"></i>&nbsp;
+              <span>Create</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
