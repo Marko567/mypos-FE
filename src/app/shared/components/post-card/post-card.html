@@ -2,8 +2,15 @@
   <div class="card-header">
     <div class="d-flex justify-content-between">
       <div>
-        <span class="fw-medium">{{ post.author }}</span>
-        <span class="text-body-secondary text-small">, posted on {{ post.created_date }}</span>
+        <!-- <span class="fw-medium">{{ post()?.author }}</span> -->
+        <span class="profile-avatar minimized" [class]="{'me': myPost(), 'another': !myPost() }">
+          @if(myPost()) {
+            {{ authStore.initials() }}
+          } @else {
+            {{ getInitials(post()!.author) }}
+          }
+        </span>
+        <small class="text-body-secondary d-block"> posted on <span [innerHTML]="post()!.created_date | dateTime"></span></small>
       </div>
       <div>
         <span><i class="bi bi-star"></i></span>
@@ -12,25 +19,32 @@
   </div>
   <div class="card-body">
     <div class="card-title fs-5">
-       {{ post.title }}
+       {{ post()?.title }}
     </div>
     <p class="card-text">
-      {{ post.text }}
+      {{ post()?.text }}
     </p>
   </div>
   <div class="card-footer py-0 d-flex justify-content-between">
     <div class="d-flex align-items-center gap-2">
-      <div class="d-flex align-content-center gap-1">
-        <span>{{ post.likes_count }}</span>
-        <span><i class="bi bi-hand-thumbs-up"></i></span>
+      <div class="d-flex align-items-center gap-1">
+        <span>{{ likeCount() }}</span>
+        <span>
+          <button class="btn btn-light btn-sm" (click)="onLike()">
+            <i [class]="isLiked() ? 'bi-hand-thumbs-up-fill text-primary' : 'bi-hand-thumbs-up'"></i>
+          </button>
+        </span>
       </div>
-      <div class="d-flex align-content-center gap-1">
-        <span>{{ post.comments_count }}</span>
+      <div class="d-flex align-items-center gap-1">
+        <span>{{ post()?.comments_count }}</span>
         <span><i class="bi bi-chat-right-text"></i></span>
       </div>
     </div>
     <div>
-      <button class="btn btn-link" [routerLink]="['/posts', post.id, 'detail']">View more</button>
+      <button class="btn btn-link btn-sm" [routerLink]="['/posts', post()?.id, 'detail']">
+        View more
+        <i class="bi bi-arrow-right"></i>
+      </button>
     </div>
   </div>
 </div>

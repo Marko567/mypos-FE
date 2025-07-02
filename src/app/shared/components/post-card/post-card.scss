@@ -1,0 +1,10 @@
+.card-footer {
+  & button.btn.btn-light {
+    border-color: transparent !important;
+    background-color: transparent;
+
+    &:hover {
+      border-color: #e9ecef !important;
+    }
+  }
+}

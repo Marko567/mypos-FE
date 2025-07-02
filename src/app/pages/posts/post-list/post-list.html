@@ -3,7 +3,7 @@
     <div class="col-md-10 col-lg-8">
       <div class="d-flex justify-content-between">
         <div class="flex-grow-1">
-          <h2>My Posts</h2>
+          <h4>My Posts</h4>
         </div>
         <div>
           <button class="btn btn-primary" routerLink="/posts/new">
@@ -24,7 +24,7 @@
     }
     @for (post of posts; track post.id) {
     <div class="col-md-12 col-lg-8">
-      <app-post-card [post]="post" />
+      <app-post-card [postInput]="post" />
     </div>
     }
   </div>

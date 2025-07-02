@@ -22,4 +22,12 @@ export class PostsService {
   create(post: NewPost) {
     return this.http.post<IPost>(`${this.resourceUrl}`, post);
   }
+
+  like(postId: string) {
+    return this.http.post<IPost>(`${this.resourceUrl}/${postId}/like`, {});
+  }
+
+  unlike(postId: string) {
+    return this.http.delete<IPost>(`${this.resourceUrl}/${postId}/like`);
+  }
 }

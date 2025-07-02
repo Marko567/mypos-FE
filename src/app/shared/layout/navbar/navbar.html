@@ -36,9 +36,12 @@
       <div class="btn-group">
         <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           @if (user()) {
-          <span>Welcome, {{ user()?.username }}</span>
+            <span class="profile-avatar me">
+              {{ authStore.initials() }}
+            </span>
+            <!-- <span>Welcome, {{ user()?.username }}</span> -->
           } @else {
-          <span>Hello, anonymous</span>
+            <span>Hello, anonymous</span>
           }
 
         </button>

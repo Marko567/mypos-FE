@@ -11,3 +11,36 @@ a.active {
 a.nav-link:hover {
   background-color: #dee2e6;
 }
+
+.card-footer {
+  background-color: unset;
+  border-top: unset;
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.minimized {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+
+  &.me {
+    background-color: aquamarine;
+  }
+
+  &.another {
+    background-color: #8E8CD8;
+  }
+}
+
+
+button.btn.dropdown-toggle::after{
+  display: none;
+}

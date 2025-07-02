@@ -25,7 +25,6 @@ export class PostUpdate implements OnInit {
     author: '',
     title: ['', Validators.required],
     text: ['', Validators.required],
-    likes_count: 0,
     comments_count: 0,
     tags: '',
     tags_count: 0

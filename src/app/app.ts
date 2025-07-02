@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Navbar } from './shared/layout/navbar/navbar';
 import { AuthStore } from './core/auth/auth.store';
 import { IUser } from './models/user.model';
@@ -13,6 +13,7 @@ import { IUser } from './models/user.model';
 export class App {
   protected title = 'mypos';
   user = inject(AuthStore).user;
+  router = inject(Router);
 
   constructor(private authStore: AuthStore) {
     this.authStore.initUserFromAPI().subscribe({
@@ -21,6 +22,7 @@ export class App {
       },
       error: () => {
         this.authStore.logout();
+        // this.router.navigate(['/login'])
       }
     })
   }

@@ -6,9 +6,10 @@ export interface IPost {
   created_date: string;
   last_modified_date: string;
   title: string;
-  likes_count: number;
+  likes: string[];
+  likedByMe: boolean;
   tags: string;
   tags_count: number;
 }
 
-export type NewPost = Omit<IPost, 'id' | 'created_date' | 'last_modified_date'>;
+export type NewPost = Omit<IPost, 'id' | 'created_date' | 'last_modified_date' | 'likes' | 'likedByMe'>;
