@@ -1,34 +1,80 @@
 <div class="container-fluid">
   <div class="container">
-    <div class="row justify-content-center mb-5 mb-4 mt-3">
+    <div class="row justify-content-center mb-5 mt-5">
       <div class="col-md-8 col-lg-6">
-        <h2>Login</h2>
+        <h2>Ready to check what's new?</h2>
+        <p class="text-muted mb-1 fs-6">
+          Log in here to access your dashboard.
+        </p>
       </div>
     </div>
 
     <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6 p-4 bg-light border rounded-4">
+      <div class="col-md-8 col-lg-6 p-4 bg-light border rounded-4 shadow-sm">
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-          <div class="row mb-2">
+          <div class="row mb-3">
             <div class="col-12">
               <label for="field_username" class="form-label">Username</label>
               <input type="text" class="form-control" formControlName="username" id="field_username">
+            </div>
+            <div class="col-12">
+              @if(loginForm.get('username')!.invalid && (loginForm.get('username')!.dirty || loginForm.get('username')!.touched)) {
+                @if(loginForm.get('username')?.hasError('required')) {
+                  <small class="form-text text-danger">Username is required!</small>
+                }
+              }
             </div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <label for="field_password" class="form-label">Password</label>
-              <input type="password" class="form-control" formControlName="password" id="field_password">
+              <div class="form-control d-flex align-items-center">
+                <input [type]="isPasswordVisible() ? 'text' : 'password'" class="flex-grow-1 border-0" formControlName="password" id="field_password">
+                <button type="button" class="btn btn-link py-0 px-2 text-decoration-none" (click)="togglePasswordVisibility()">
+                  <i [class]="isPasswordVisible() ? 'bi-eye-fill' : 'bi bi-eye-slash-fill text-secondary'"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-12">
+              @if(loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)) {
+                @if(loginForm.get('password')?.hasError('required')) {
+                  <small class="form-text text-danger">Password is required!</small>
+                }
+                @if(loginForm.get('password')?.hasError('maxlength')) {
+                  <small class="form-text text-danger">Password cannot be longer then 64 characters!</small>
+                }
+              }
             </div>
           </div>
 
           <div class="row">
             <div class="col-12">
               <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid || isLoading()">
+                  @if(isLoading()) {
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status" class="ms-2">Logging you in...</span>
+                  } @else {
+                    <span>Log in</span>
+                  }
+                </button>
               </div>
             </div>
+            <div class="col-12 mb-2">
+              <div class="d-flex justify-content-center">
+                <small>Don't have an account?
+                  <a routerLink="/register" class="link-text text-decoration-none">Register first</a>
+                </small>
+              </div>
+            </div>
+            @if(isError()) {
+              <div class="col-12">
+                <div class="d-flex justify-content-center">
+                  <small class="form-text text-danger">{{ errorMessage() }}</small>
+                </div>
+              </div>
+            }
           </div>
         </form>
       </div>

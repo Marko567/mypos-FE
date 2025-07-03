@@ -40,4 +40,8 @@ export class Register {
       }
     })
   }
+
+  onCancel() {
+    window.history.back();
+  }
 }
