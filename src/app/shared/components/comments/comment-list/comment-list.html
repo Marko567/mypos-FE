@@ -1,0 +1,18 @@
+
+<div class="mb-2">
+  <app-comment-update [post]="post()"></app-comment-update>
+</div>
+
+@for (comment of commentsWithReplies(); track comment.id) {
+<div class="d-flex flex-column gap-2">
+  <app-comment [comment]="comment" (replyTo)="onReplyToComment($event)"></app-comment>
+  <div class="ps-4 d-flex flex-column gap-2 mb-2">
+    @for (reply of comment.replies; track reply.id) {
+      <app-comment [comment]="reply" (replyTo)="onReplyToComment($event)"></app-comment>
+    }
+    @if(shouldShowReplyForm(comment)) {
+      <app-comment-update [post]="post()" [replyId]="comment.id"></app-comment-update>
+    }
+  </div>
+</div>
+}

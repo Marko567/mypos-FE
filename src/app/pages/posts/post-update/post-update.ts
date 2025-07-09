@@ -17,7 +17,7 @@ export class PostUpdate implements OnInit {
   fb = inject(FormBuilder);
   postService = inject(PostsService);
   router = inject(Router);
-  user: Signal<IUser | null> = inject(AuthStore).user;
+  authStore = inject(AuthStore);
 
   tagsArray = this.fb.array<FormControl<string>>([]);
 
@@ -25,7 +25,6 @@ export class PostUpdate implements OnInit {
     author: '',
     title: ['', Validators.required],
     text: ['', Validators.required],
-    comments_count: 0,
     tags: '',
     tags_count: 0
   })
@@ -39,7 +38,7 @@ export class PostUpdate implements OnInit {
   onSubmit() {
     const post = this.postForm.getRawValue();
     const tagsArray = this.tagsArray.getRawValue();
-    post.author = this.user()?.username as string;
+    post.author = this.authStore.user()!.id as string;
 
     if(tagsArray.length) {
       post.tags = tagsArray.join(';');

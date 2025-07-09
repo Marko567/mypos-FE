@@ -30,7 +30,7 @@
             <div class="col-12">
               <label for="field_password" class="form-label">Password</label>
               <div class="form-control d-flex align-items-center">
-                <input [type]="isPasswordVisible() ? 'text' : 'password'" class="flex-grow-1 border-0" formControlName="password" id="field_password">
+                <input [type]="isPasswordVisible() ? 'text' : 'password'" class="flex-grow-1 border-0 outline-0" formControlName="password" id="field_password">
                 <button type="button" class="btn btn-link py-0 px-2 text-decoration-none" (click)="togglePasswordVisibility()">
                   <i [class]="isPasswordVisible() ? 'bi-eye-fill' : 'bi bi-eye-slash-fill text-secondary'"></i>
                 </button>
@@ -48,9 +48,9 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-12">
-              <div class="d-flex justify-content-end">
+          <div class="row gap-2">
+            <div class="col-12 mt-2">
+              <div class="d-grid">
                 <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid || isLoading()">
                   @if(isLoading()) {
                     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>

@@ -25,11 +25,9 @@ a.nav-link:hover {
   align-items: center;
   justify-content: center;
 
-  &.minimized {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.875rem;
-  }
+  &.large { width: 2.5rem; height: 2.5rem; font-size: 1.125rem; font-weight: 500; }
+  &.medium { width: 2rem; height: 2rem; font-size: 1rem; }
+  &.small { width: 1.5rem; height: 1.5rem; font-size: 0.875rem; }
 
   &.me {
     background-color: aquamarine;
@@ -47,4 +45,30 @@ button.btn.dropdown-toggle::after{
 
 .link-text {
   color: #007bff;
+}
+
+.outline-0 {
+  outline: 0 !important;
+}
+
+.card-footer {
+  & button.btn.btn-light {
+    border-color: transparent !important;
+    background-color: transparent;
+
+    &:hover {
+      border-color: #e9ecef !important;
+    }
+  }
+}
+
+button.btn.btn-link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+hr {
+  margin: 0.25rem 0;
 }

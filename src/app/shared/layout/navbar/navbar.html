@@ -35,15 +35,9 @@
       </form> -->
       <div class="btn-group">
         <button type="button" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          @if (user()) {
-            <span class="profile-avatar me">
-              {{ authStore.initials() }}
-            </span>
-            <!-- <span>Welcome, {{ user()?.username }}</span> -->
-          } @else {
-            <span>Hello, anonymous</span>
+          @if (authStore.isLoggedIn()) {
+            <app-user-avatar [user]="authStore.user()!" [avatarSize]="'large'"></app-user-avatar>
           }
-
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><button class="dropdown-item" type="button">Settings</button></li>

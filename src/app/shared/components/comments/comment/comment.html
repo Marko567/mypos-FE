@@ -1,0 +1,23 @@
+<div class="d-flex gap-2">
+  <div>
+    <app-user-avatar [user]="comment().created_by"></app-user-avatar>
+  </div>
+  <div class="flex-grow-1">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="fw-normal">user data</div>
+      <small class="text-body-secondary">
+        commented on  <span [innerHTML]="comment()!.created_date | dateTime"></span>
+      </small>
+    </div>
+    <p class="mb-2">{{ this.comment().content }}</p>
+    <div class="d-flex align-items-center">
+      <button class="btn btn-light btn-sm">
+        Like
+      </button>
+      <i class="bi bi-dot"></i>
+      <button class="btn btn-light btn-sm" (click)="onReply(comment().id)">
+        Reply
+      </button>
+    </div>
+  </div>
+</div>

@@ -3,10 +3,11 @@ import { Router, RouterModule } from '@angular/router';
 import { IUser } from '../../../models/user.model';
 import { AuthStore } from '../../../core/auth/auth.store';
 import { CommonModule } from '@angular/common';
+import { UserAvatar } from '../user-avatar/user-avatar';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, UserAvatar],
   standalone: true,
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
@@ -14,7 +15,6 @@ import { CommonModule } from '@angular/common';
 export class Navbar {
   authStore = inject(AuthStore);
   router = inject(Router);
-  user: Signal<IUser | null> = inject(AuthStore).user;
 
   onLogout() {
     this.authStore.logout();

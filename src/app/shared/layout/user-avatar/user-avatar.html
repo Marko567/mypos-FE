@@ -1,0 +1,6 @@
+<span class="profile-avatar" [ngClass]="[
+  avatarSize(),
+  isMe() ? 'me' : 'another'
+]">
+  {{ this.getInitials() }}
+</span>

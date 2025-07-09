@@ -1,0 +1,19 @@
+<div class="d-flex gap-2">
+  @if(authStore.isLoggedIn()) {
+    <app-user-avatar [user]="authStore.user()!"></app-user-avatar>
+  }
+
+  <form [formGroup]="commentForm()" class="flex-grow-1" (ngSubmit)="onComment()">
+    <div class="form-control">
+      <textarea type="text" class="w-100 outline-0 border-0" formControlName="content"
+        placeholder="Type you comment here..." id="field_text">
+          Enter your comment here
+        </textarea>
+      @if(commentForm().valid){
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-sm">Send</button>
+      </div>
+      }
+    </div>
+  </form>
+</div>

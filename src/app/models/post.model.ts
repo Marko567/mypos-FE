@@ -1,6 +1,8 @@
+import { IUser } from "./user.model";
+
 export interface IPost {
   id: string;
-  author: string;
+  author: IUser;
   comments_count: number;
   text: string;
   created_date: string;
@@ -12,4 +14,4 @@ export interface IPost {
   tags_count: number;
 }
 
-export type NewPost = Omit<IPost, 'id' | 'created_date' | 'last_modified_date' | 'likes' | 'likedByMe'>;
+export type NewPost = Omit<IPost, 'id' | 'created_date' | 'last_modified_date' | 'likes' | 'likedByMe' | 'comments_count' | 'author'> & { author: string };
