@@ -2,7 +2,14 @@
   <div class="card-header">
     <div class="d-flex justify-content-between">
       <div>
-        <app-user-avatar [user]="post()!.author"></app-user-avatar>
+        <div class="d-flex gap-2 align-items-center">
+          <app-user-avatar [user]="post()!.author"></app-user-avatar>
+          @if(post()?.author?.first_name && post()?.author?.last_name) {
+            {{ post()?.author?.first_name }} {{ post()?.author?.last_name }}
+          } @else {
+            <span>{{ post()?.author?.username }}</span>
+          }
+        </div>
         <small class="text-body-secondary d-block"> posted on <span [innerHTML]="post()!.created_date | dateTime"></span></small>
       </div>
       <div>

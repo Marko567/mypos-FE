@@ -15,6 +15,7 @@ export class AuthStore {
 
   readonly user = computed(() => this._user());
   readonly isLoggedIn = computed(() => !!this._user());
+  readonly router = inject(Router);
 
   constructor() {}
 
@@ -40,6 +41,6 @@ export class AuthStore {
   logout(): void {
     this._user.set(null);
     this.storage.clear('access_token');
-    // this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }

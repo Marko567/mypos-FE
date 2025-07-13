@@ -18,6 +18,6 @@ export class Navbar {
 
   onLogout() {
     this.authStore.logout();
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
   }
 }

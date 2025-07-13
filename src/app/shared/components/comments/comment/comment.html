@@ -4,7 +4,7 @@
   </div>
   <div class="flex-grow-1">
     <div class="d-flex justify-content-between align-items-center mb-2">
-      <div class="fw-normal">user data</div>
+      <div class="fw-normal">{{ comment().created_by.first_name }} {{ comment().created_by.last_name }}</div>
       <small class="text-body-secondary">
         commented on  <span [innerHTML]="comment()!.created_date | dateTime"></span>
       </small>

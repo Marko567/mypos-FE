@@ -23,11 +23,11 @@ export class UserAvatar {
 
     if(this.user().first_name && this.user().last_name) {
       firstInitial = this.user().first_name.charAt(0).toUpperCase();
-      secondInitial = this.user().last_name.charAt(1).toUpperCase();
+      secondInitial = this.user().last_name.charAt(0).toUpperCase();
     } else {
       const username = this.user().username;
       firstInitial = username.charAt(0).toUpperCase();
-      secondInitial = username.charAt(1).toUpperCase();
+      secondInitial = username.charAt(0).toUpperCase();
     }
     return `${firstInitial}${secondInitial}`;
   }
