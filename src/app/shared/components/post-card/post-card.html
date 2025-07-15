@@ -3,14 +3,14 @@
     <div class="d-flex justify-content-between">
       <div>
         <div class="d-flex gap-2 align-items-center">
-          <app-user-avatar [user]="post()!.author"></app-user-avatar>
-          @if(post()?.author?.first_name && post()?.author?.last_name) {
-            {{ post()?.author?.first_name }} {{ post()?.author?.last_name }}
+          <app-user-avatar [user]="post().author"></app-user-avatar>
+          @if(post().author.first_name && post().author.last_name) {
+            {{ post().author.first_name }} {{ post().author.last_name }}
           } @else {
-            <span>{{ post()?.author?.username }}</span>
+            <span>{{ post().author.username }}</span>
           }
         </div>
-        <small class="text-body-secondary d-block"> posted on <span [innerHTML]="post()!.created_date | dateTime"></span></small>
+        <small class="text-body-secondary d-block"> posted on <span [innerHTML]="post().created_date | dateTime"></span></small>
       </div>
       <div>
         <span><i class="bi bi-star"></i></span>
@@ -19,10 +19,10 @@
   </div>
   <div class="card-body">
     <div class="card-title fs-5">
-       {{ post()?.title }}
+       {{ post().title }}
     </div>
     <p class="card-text">
-      {{ post()?.text }}
+      {{ post().text }}
     </p>
   </div>
   <div class="card-footer d-flex flex-column align-items-between">
@@ -35,12 +35,12 @@
           </span>
         </div>
         <div class="d-flex align-items-center gap-1">
-          <span>{{ post()?.comments_count }}</span>
+          <span>{{ post().comments_count }}</span>
           <span><i class="bi bi-chat-right-text"></i></span>
         </div>
       </div>
       <div>
-        <button class="btn btn-link btn-sm" [routerLink]="['/posts', post()?.id, 'detail']">
+        <button class="btn btn-link btn-sm" [routerLink]="['/posts', post().id, 'detail']">
           View more
           <i class="bi bi-arrow-right"></i>
         </button>
@@ -73,7 +73,7 @@
         <hr>
         <div class="row gap-2">
           <div class="col-12">
-            <app-comment-list [post]="post()!"></app-comment-list>
+            <app-comment-list [post]="post()"></app-comment-list>
           </div>
         </div>
       }

@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { IPost } from '../../../models/post.model';
 import { DateTimePipe } from '../../pipes/date-time.pipe';
 import { PostsService } from '../../../pages/posts/posts.service';
@@ -15,20 +15,16 @@ import { RouterModule } from '@angular/router';
   standalone: true
 })
 export class PostCard {
-  @Input({ required: true })
-  set postInput(post: IPost) {
-    this.post.set(post);
-  }
-  // likesCount = signal<number>(this.post.likes.length);
+  post = model.required<IPost>();
+
   postService = inject(PostsService);
   authStore = inject(AuthStore);
   showComments = signal<boolean>(false);
 
-  readonly post = signal<IPost | null>(null);
 
-  readonly isLiked = computed(() => this.authStore.user() && this.post()?.likes.includes(this.authStore.user()!.username));
-  readonly likeCount = computed(() => this.post()?.likes.length ?? 0);
-  readonly myPost = computed(() => this.authStore.user()!.id === this.post()!.author.id);
+  readonly isLiked = computed(() => this.authStore.user() && this.post().likes.includes(this.authStore.user()!.username));
+  readonly likeCount = computed(() => this.post().likes.length ?? 0);
+  readonly myPost = computed(() => this.authStore.user()!.id === this.post().author.id);
 
   onLike() {
     const post = this.post();
